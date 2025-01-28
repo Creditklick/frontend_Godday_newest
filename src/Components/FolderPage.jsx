@@ -356,7 +356,7 @@ function FileUploadAndShowAllFiles() {
     const fetchFiles = async () => {
         try {
             //https://file-manager-backend-5.onrender.com/
-            const response = await axios.get(`http://localhost:8000/files/${folderPath}`);
+            const response = await axios.get(`https://file-manager-backend-main-1.onrender.com/files/${folderPath}`);
             setFiles(response.data);
             console.log(response.data);
         } catch (error) {
@@ -418,7 +418,7 @@ function FileUploadAndShowAllFiles() {
     
         try {
             setLoading(true);
-            const response = await axios.post(`http://localhost:8000/upload/inside/${folderPath}`, formData);
+            const response = await axios.post(`https://file-manager-backend-main-1.onrender.com/upload/inside/${folderPath}`, formData);
             alert(response.data);
             setLoading(false);
     
@@ -439,7 +439,7 @@ function FileUploadAndShowAllFiles() {
 
     const handleDeleteFile = async (filePath) => {
         try {
-            await axios.delete('http://localhost:8000/delete', { data: { filePath } });
+            await axios.delete('https://file-manager-backend-main-1.onrender.com/delete', { data: { filePath } });
             alert("File deleted!");
             fetchFiles(filePath);
         } catch (error) {
@@ -450,7 +450,7 @@ function FileUploadAndShowAllFiles() {
     const handleDownload = async (folderPath, fileName) => {
         try {
             // Create the file URL for the download endpoint
-            const fileURL = `http://localhost:8000/download/${folderPath}/${fileName}`;
+            const fileURL = `https://file-manager-backend-main-1.onrender.com/download/${folderPath}/${fileName}`;
 
             // Trigger the download by making a GET request to the server
             const response = await fetch(fileURL, {
