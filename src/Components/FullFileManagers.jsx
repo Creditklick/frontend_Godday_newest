@@ -521,7 +521,7 @@ const FullFileManagers = ({setFileProtection}) => {
     const fetchFiles = async (folderPath = '') => {
         try {
             // const response = await axios.get(`https://backend-theta-vert-75.vercel.app/files?folderPath=${folderPath}`);
-            const response = await axios.get(`http://localhost:8000/files?folderPath=${folderPath}`);
+            const response = await axios.get(`https://file-manager-backend-main-1.onrender.com/files?folderPath=${folderPath}`);
             setFiles(response.data);
         } catch (error) {
             console.error("Error fetching files:", error);
@@ -566,7 +566,7 @@ const FullFileManagers = ({setFileProtection}) => {
         try {
            
             // const response = await axios.post('https://backend-theta-vert-75.vercel.app/upload', formData);
-           const response = await axios.post('http://localhost:8000/upload', formData);
+           const response = await axios.post('https://file-manager-backend-main-1.onrender.com/upload', formData);
             alert(response.data);
             fetchFiles(currentPath);
         } catch (error) {
@@ -592,7 +592,7 @@ const FullFileManagers = ({setFileProtection}) => {
         try {
            //https://file-manager-godaddy.vercel.app
             // const response = await axios.post('https://backend-theta-vert-75.vercel.app/create-folder', { folderPath: `${currentPath}/${folderName}` });
-             const response = await axios.post('http://localhost:8000/create-folder', { folderPath: `${currentPath}/${folderName}` });
+             const response = await axios.post('https://file-manager-backend-main-1.onrender.com/create-folder', { folderPath: `${currentPath}/${folderName}` });
             alert(response.data);
             fetchFiles(currentPath);
         } catch (error) {
@@ -603,7 +603,7 @@ const FullFileManagers = ({setFileProtection}) => {
     const handleDelete = async (filePath) => {
         try {
            //https://file-manager-godaddy.vercel.app
-            await axios.delete('http://localhost:8000/delete', { data: { filePath } });
+            await axios.delete('https://file-manager-backend-main-1.onrender.com/delete', { data: { filePath } });
             alert("File deleted!");
             fetchFiles(currentPath);
         } catch (error) {
