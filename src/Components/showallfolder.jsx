@@ -87,7 +87,7 @@ function ShowAllFolder({ files, navigateToFolders , fetchFiles , setFileProtecti
 
     const handlePasswordSubmit = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/users/folder', {
+        const response = await axios.get('https://file-manager-backend-main-1.onrender.com/api/users/folder', {
           params : {
             foldername : foldername,
             password : password
@@ -152,7 +152,7 @@ const handleDeleteFolder = async (folderPath) => {
   console.log(`Deleting folder: ${folderPath}`);
   setLoading(folderPath); // Start loading state
   try {
-    const response = await axios.delete(`http://localhost:8000/delete-folder?folderPath=${folderPath}`);
+    const response = await axios.delete(`https://file-manager-backend-main-1.onrender.com/delete-folder?folderPath=${folderPath}`);
     console.log("Delete Folder Successfully", response);
     alert("Folder Deleted Successfully");
     fetchFiles(folderPath); // Update file/folder list
@@ -189,7 +189,7 @@ const handleDeleteFolder = async (folderPath) => {
 
   const deleteFromDB = async (foldername, folderpassword) => {
     try {
-      const response = await axios.delete('http://localhost:8000/api/users/delete-folder', {
+      const response = await axios.delete('https://file-manager-backend-main-1.onrender.com/api/users/delete-folder', {
         params: { foldername, folderpassword }, // Pass query parameters here
       });
   
