@@ -305,7 +305,7 @@ function Home() {
     console.log("Password: ", password);
   
     try {
-      const response = await axios.get('https://file-manager-backend-5.onrender.com/api/users/login', {
+      const response = await axios.get('https://file-manager-backend-main-1.onrender.com/api/users/login', {
     
          params :{
           email: email,
