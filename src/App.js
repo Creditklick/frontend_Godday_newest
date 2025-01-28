@@ -36,8 +36,27 @@ function App() {
      //     return <Navigate to="/filesystem" replace />;
      //   }
      // };
+
+
+     const [fileprotection,setFileProtection] = useState('');
      
-   
+    
+
+
+     useEffect(()=>{
+           console.log("fileprotection state is ",fileprotection);
+     })
+
+
+
+     const ProtectEachFolder =({children,fileprotection})=>{
+            //console.log protect Each Folder:
+            if(!fileprotection){
+                 return <Navigate to='/filesystem' replace/>
+            }
+            return children;
+
+     }
     
    
 
@@ -51,10 +70,10 @@ function App() {
            
               
                <Route path='/' element={<Home/>}/>
-               <Route path = '/filesystem'   element={<ProtectedRoute ><FullFileManager/></ProtectedRoute>}/> 
+               <Route path = '/filesystem'   element={<ProtectedRoute ><FullFileManager setFileProtection=  {setFileProtection} /></ProtectedRoute>}/> 
                {/* <Route path = '/page1'   element={<Page/>}/>  */}
                {/* <Route path="/folder/:folderPath" element={<FolderPage />} /> */}
-               <Route path="/:folderPath" element={<ProtectedRoute><FolderPage /></ProtectedRoute>} /> 
+               <Route path="/:folderPath" element={<ProtectEachFolder fileprotection={fileprotection}><FolderPage /></ProtectEachFolder>} /> 
                  
 {/*                  
                <Route 
