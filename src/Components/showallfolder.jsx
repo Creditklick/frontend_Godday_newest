@@ -48,7 +48,7 @@ import PasswordInputModal from './../Components/PasswordInputModal'
 
 import { Delete } from '@mui/icons-material';
 
-function ShowAllFolder({ files, navigateToFolders , fetchFiles }) {
+function ShowAllFolder({ files, navigateToFolders , fetchFiles , setFileProtection}) {
 
 
 
@@ -98,20 +98,10 @@ function ShowAllFolder({ files, navigateToFolders , fetchFiles }) {
         
     // Check if the response status is true
     if (response.data.success) {
-        
-
-
-      const authenticatedFolders = JSON.parse(localStorage.getItem('authenticatedFolders')) || {};
-      authenticatedFolders[foldername] = true;  // Mark the folder as authenticated
-      localStorage.setItem('authenticatedFolders', JSON.stringify(authenticatedFolders));
+        setFileProtection(true);
+        navigateToFolders(foldername);
+    
      
-      const isAuthenticated = authenticatedFolders[foldername];
-      if (isAuthenticated) {
-        navigateToFolders(foldername); // Navigate to the folder
-      } else {
-        alert("Folder authentication failed.");
-      }
-
      //set authenticate locally:
       // alert(response.data.message); // Optional: Display success message
       // navigateToFolders(`${foldername}`); // Replace '/success' with the desired route
