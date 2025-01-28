@@ -503,7 +503,7 @@ import CreateFolder from './CreateFolder';
 
 
 
-const FullFileManagers = () => {
+const FullFileManagers = ({setFileProtection}) => {
     const navigate = useNavigate();
 
     const [files, setFiles] = useState([]);
@@ -690,7 +690,7 @@ const FullFileManagers = () => {
             {/* Show All Folders */}
             <FilesPage files={files} handleDelete={(fileName) => handleDelete(`${currentPath}/${fileName}`)} />
 
-            <ShowAllFolder files={files} navigateToFolders={navigateToFolders} fetchFiles = {fetchFiles} />
+            <ShowAllFolder files={files} navigateToFolders={navigateToFolders} fetchFiles = {fetchFiles}  setFileProtection={setFileProtection} />
         </div>
     );
 };
