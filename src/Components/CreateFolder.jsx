@@ -592,7 +592,7 @@ function CreateFolder({ currentPath, setFolderName, handleCreateFolder, folderNa
     console.log("Call MongoDB password", password);
 
     try {
-      const response = await axios.post('http://localhost:8000/api/users/folder', {
+      const response = await axios.post('https://file-manager-backend-main-1.onrender.com/api/users/folder', {
         foldername: folderName,
         folderpassword: password,
         creator: ''
