@@ -65,7 +65,7 @@ function Header() {
   };
 
   return (
-    <header className="flex items-center justify-between p-4 bg-blue-600 text-white shadow-md">
+    <header className="flex items-center justify-between p-4 bg-blue-600 text-white shadow-md w-full">
       {/* Logo Section */}
       <div className="text-2xl font-bold">
         <a href="/" className="hover:text-gray-300">
