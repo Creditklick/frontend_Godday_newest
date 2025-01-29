@@ -505,7 +505,7 @@ import FolderIcon from '@mui/icons-material/Folder';
 
 
 
-import Footer from './Footer'
+
 
 
 const FullFileManagers = ({setFileProtection}) => {
