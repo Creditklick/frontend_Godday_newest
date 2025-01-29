@@ -396,7 +396,7 @@ function FilePage({ files, handleDelete }) {
                         .map((file, index) => (
                             <div
                                 key={index}
-                                className="flex justify-between items-center p-4 border rounded-lg bg-green-100 shadow-lg mb-4"
+                                className="md:flex justify-between items-center p-4 border rounded-lg bg-green-100 shadow-lg mb-4"
                             >
                                 <span className="font-medium text-green-800">{file.name}</span>
                                 <div className="space-x-3 flex">
