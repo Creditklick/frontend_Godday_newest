@@ -170,7 +170,7 @@ function FilePage({ files, handleDelete }) {
           
             console.log("File name ",fileName);
             // console.log("Folder name ",folderPath);
-            const fileURL = `http://localhost:8000/download/${fileName}`;
+            const fileURL = `https://file-manager-backend-main-1.onrender.com/download/${fileName}`;
 
             // Trigger the download by making a GET request to the server
             const response = await fetch(fileURL, {
