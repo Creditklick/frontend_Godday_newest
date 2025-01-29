@@ -41,11 +41,14 @@
 
 
 
+
 import React, { useState } from 'react';
 import { CircularProgress } from '@mui/material';
 
 function UploadFile({ handleFileChange, handleUpload }) {
   const [loading, setLoading] = useState(false);
+
+  const [progress,setProgress] = useState(0);
 
   // Update the loading state during upload process
   const onUpload = async () => {
@@ -55,7 +58,7 @@ function UploadFile({ handleFileChange, handleUpload }) {
   };
 
   return (
-    <div className="p-2 bg-white shadow-md rounded-md max-w-sm mx-auto">
+    <div className="p-2 bg-white shadow-md rounded-md ">
     <input
       className="border p-1 w-full rounded-md focus:outline-none focus:ring-1 focus:ring-blue-300"
       type="file"
