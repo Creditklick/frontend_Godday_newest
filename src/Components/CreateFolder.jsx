@@ -576,6 +576,147 @@
 
 
 
+// import React, { useState } from 'react';
+// import { Button, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
+// import { FaFolderPlus } from 'react-icons/fa'; // Folder icon for creation
+// import { MdArrowBack } from 'react-icons/md'; // Back icon
+// import axios from 'axios';
+
+// function CreateFolder({ currentPath, setFolderName, handleCreateFolder, folderName, goBack }) {
+//   const [loading, setLoading] = useState(false);
+//   const [openPopup, setOpenPopup] = useState(false);
+//   const [password, setPassword] = useState('');
+
+//   const handlefolderDB = async () => {
+//     console.log("Call MongoDB Database", folderName);
+//     console.log("Call MongoDB password", password);
+
+//     try {
+//       const response = await axios.post('https://file-manager-backend-main-1.onrender.com/api/users/folder', {
+//         foldername: folderName,
+//         folderpassword: password,
+//         creator: ''
+//       });
+
+//       console.log("Response from frontend", response.data);
+//       if (response.data.success) {
+//         return true;
+//       } else {
+//         return false;
+//       }
+//     } catch (error) {
+//       console.error("Error from server:", error.response ? error.response.data.message : error.message);
+//       alert("Error: " + (error.response ? error.response.data.message : error.message));
+//     }
+//   };
+
+//   const handleFolderCreation = async () => {
+//     if (!folderName) {
+//       alert('Folder name is required.');
+//       return;
+//     }
+//     setLoading(true);
+
+//     if (await handlefolderDB() === true) {
+//       await handleCreateFolder();
+//     }
+
+//     setLoading(false);
+//     setOpenPopup(false); // Close popup after folder creation
+//   };
+
+//   return (
+//     <div>
+//       {/* Navigation and current path display */}
+//       <div className="flex justify-between items-center mb-6">
+//         {currentPath && (
+//           <Button
+//             variant="contained"
+//             color="success"
+//             startIcon={<MdArrowBack />}
+//             onClick={goBack}
+//           >
+//             ⬅️ Go Back
+//           </Button>
+//         )}
+//         <div>Current Path: <span>{currentPath || 'Root'}</span></div>
+//       </div>
+
+//       {/* Button to trigger popup */}
+//       <div className="p-4 bg-green-50 rounded-md shadow-md">
+//         <Button
+//           variant="contained"
+//           color="primary"
+//           startIcon={<FaFolderPlus />}
+//           onClick={() => setOpenPopup(true)} // Open popup
+//         >
+//           Create Folder
+//         </Button>
+//       </div>
+
+//       {/* Popup for creating a folder */}
+//       <Dialog open={openPopup} onClose={() => setOpenPopup(false)} fullWidth maxWidth="sm">
+//         <DialogTitle>Create New Folder</DialogTitle>
+//         <DialogContent>
+//           <TextField
+//             label="Folder Name"
+//             fullWidth
+//             margin="normal"
+//             value={folderName}
+//             onChange={(e) => setFolderName(e.target.value)}
+//           />
+//           <TextField
+//             label="Password"
+//             fullWidth
+//             margin="normal"
+//             value={password}
+//             onChange={(e) => setPassword(e.target.value)}
+//           />
+//         </DialogContent>
+//         <DialogActions>
+//           <Button
+//             onClick={() => setOpenPopup(false)}
+//             color="secondary"
+//             variant="outlined"
+//           >
+//             Close
+//           </Button>
+//           <Button
+//             onClick={handleFolderCreation}
+//             color="primary"
+//             variant="contained"
+//             disabled={loading}
+//           >
+//             {loading ? <CircularProgress size={24} color="inherit" /> : 'Create Folder'}
+//           </Button>
+//         </DialogActions>
+//       </Dialog>
+//     </div>
+//   );
+// }
+
+// export default CreateFolder;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState } from 'react';
 import { Button, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import { FaFolderPlus } from 'react-icons/fa'; // Folder icon for creation
@@ -628,7 +769,7 @@ function CreateFolder({ currentPath, setFolderName, handleCreateFolder, folderNa
   return (
     <div>
       {/* Navigation and current path display */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center ">
         {currentPath && (
           <Button
             variant="contained"
@@ -639,11 +780,11 @@ function CreateFolder({ currentPath, setFolderName, handleCreateFolder, folderNa
             ⬅️ Go Back
           </Button>
         )}
-        <div>Current Path: <span>{currentPath || 'Root'}</span></div>
+      
       </div>
 
       {/* Button to trigger popup */}
-      <div className="p-4 bg-green-50 rounded-md shadow-md">
+      <div className="p-4 md:p-8 bg-green-50 rounded-md shadow-md">
         <Button
           variant="contained"
           color="primary"
@@ -696,3 +837,4 @@ function CreateFolder({ currentPath, setFolderName, handleCreateFolder, folderNa
 }
 
 export default CreateFolder;
+
