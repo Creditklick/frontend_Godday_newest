@@ -40,13 +40,43 @@ function Home() {
     setOpenLogin(true);
   };
 
-  const handleSignup = (e) => {
+  // const handleSignup = (e) => {
+  //   e.preventDefault();
+  //   if (image) console.log("Found an Image");
+  //   else console.log("No Image Found");
+  //   console.log("Click on signup", name, email, password);
+  // };
+
+
+
+const handleSignup = async (e) => {
     e.preventDefault();
-    if (image) console.log("Found an Image");
-    else console.log("No Image Found");
-    console.log("Click on signup", name, email, password);
+    try {
+      const response = await axios.post(
+        "file-manager-backend-main-1.onrender.com/api/users/signup/",
+        { name, email, password },
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      console.log("Signup successful", response.data);
+     alert("Account Created please click on login ");
+     
+       // toast.success("Signup Successfull");
+        
+    } catch (err) {
+      if (err.response) {
+        console.error("Signup failed:", err.response.data.message);
+        // setError(err.response.data.message);
+        // toast.error(err.response.data.message || "Signup Failed");
+      } else {
+        console.error("Error in signup request:", err.message);
+      }
+    }
   };
 
+
+
+ 
 
 
   const handleLogin = async (e) => {
