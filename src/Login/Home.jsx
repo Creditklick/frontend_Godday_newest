@@ -351,8 +351,10 @@ function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [openLogin, setOpenLogin] = useState(true);
-  const [openSignup, setOpenSignup] = useState(false);
+ 
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openSignup, setOpenSignup] = useState(true);
+ 
   const [showimage, setShowImage] = useState(null);
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
