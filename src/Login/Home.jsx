@@ -53,7 +53,7 @@ const handleSignup = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "file-manager-backend-main-1.onrender.com/api/users/signup/",
+        "file-manager-backend-main-1.onrender.com/api/users/signup",
         { name, email, password },
         { headers: { "Content-Type": "application/json" } }
       );
