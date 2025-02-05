@@ -51,6 +51,11 @@ function Home() {
 
 const handleSignup = async (e) => {
     e.preventDefault();
+
+    console.log("name is ",name);
+   console.log("email is , email);
+               console.log("password is ",password);
+ 
     try {
       const response = await axios.post(
         "file-manager-backend-main-1.onrender.com/api/users/signup",
