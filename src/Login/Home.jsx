@@ -54,8 +54,15 @@ const handleSignup = async (e) => {
     try {
       const response = await axios.post(
         "file-manager-backend-main-1.onrender.com/api/users/signup",
-        { name, email, password },
-        { headers: { "Content-Type": "application/json" } }
+       {  params :{
+          name : name,
+          email: email,
+          password: password
+
+         }
+       }
+       // { name, email, password },
+       // { headers: { "Content-Type": "application/json" } }
       );
 
       console.log("Signup successful", response.data);
