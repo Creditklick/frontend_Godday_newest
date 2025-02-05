@@ -386,7 +386,7 @@ function Home() {
 
       try{
         const response = await axios.post(
-          'http://localhost:8000/api/users/signup',
+          'https://file-manager-backend-main-1.onrender.com/api/users/signup',
           {
               name: name,
               email: email,
@@ -420,7 +420,7 @@ function Home() {
     console.log("Password: ", password);
   
     try {
-      const response = await axios.get('http://localhost:8000/api/users/login', {
+      const response = await axios.get('https://file-manager-backend-main-1.onrender.com/api/users/login', {
     
          params :{
           email: email,
