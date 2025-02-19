@@ -315,7 +315,7 @@ function FilePage({ files, handleDelete }) {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 2000); // Adjust the time as needed
+        }, 1000); // Adjust the time as needed
 
         return () => clearTimeout(timer); // Cleanup on unmount
     }, []);
