@@ -162,29 +162,32 @@ function AppContent() {
 
  
   useEffect(() => {
-    console.log('My current location is: ', location.pathname);
-    
-    if (location.pathname === '/') {
-      localStorage.removeItem('token'); 
-      setToken(null); 
+  console.log('My current location is: ', location.pathname);
+  
+  // Remove token when navigating to "/"
+  if (location.pathname === '/') {
+    localStorage.removeItem('token'); 
+    setToken(null); 
+  }
+
+  // Ensure token removal when navigating via browser back/forward buttons
+  const handleNavigation = () => {
+    console.log('Browser navigation detected:', window.location.pathname);
+    if (window.location.pathname === '/') {
+      localStorage.removeItem('token');
+      setToken(null);
     }
-  
-    // Listen for browser navigation (back/forward)
-    const handlePopState = () => {
-      console.log('Browser navigation detected:', location.pathname);
-      if (window.location.pathname === '/') {
-        localStorage.removeItem('token');
-        setToken(null);
-      }
-    };
-  
-    window.addEventListener('popstate', handlePopState);
-  
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-    };
-  
-  }, [location.pathname]); // Trigger on route change
+  };
+
+  // Use window.onpopstate instead of addEventListener
+  window.onpopstate = handleNavigation;
+
+  return () => {
+    window.onpopstate = null; // Cleanup
+  };
+
+}, [location.pathname]); // Trigger on route change
+
   
 
  
