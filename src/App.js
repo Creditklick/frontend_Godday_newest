@@ -163,21 +163,29 @@ function AppContent() {
  
   useEffect(() => {
     console.log('My current location is: ', location.pathname);
+    
     if (location.pathname === '/') {
-    console.log("Current location is '/', removing token.");
-    
-    const token = localStorage.getItem("token"); // Use localStorage.getItem instead of getItem
-    console.log("Token before removal:", token);
-    
-    localStorage.removeItem("token");
-    
-    const tokenAfterRemoval = localStorage.getItem("token"); // Use localStorage.getItem again
-    console.log("Token after removal:", tokenAfterRemoval);
-    
-    setToken(null); 
-}
-
-  });
+      localStorage.removeItem('token'); 
+      setToken(null); 
+    }
+  
+    // Listen for browser navigation (back/forward)
+    const handlePopState = () => {
+      console.log('Browser navigation detected:', location.pathname);
+      if (window.location.pathname === '/') {
+        localStorage.removeItem('token');
+        setToken(null);
+      }
+    };
+  
+    window.addEventListener('popstate', handlePopState);
+  
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  
+  }, [location.pathname]); // Trigger on route change
+  
 
  
   const ProtectEachFolder = ({ children, fileProtection }) => {
