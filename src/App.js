@@ -177,7 +177,7 @@ function AppContent() {
     setToken(null); 
 }
 
-  }, [location]);
+  });
 
  
   const ProtectEachFolder = ({ children, fileProtection }) => {
