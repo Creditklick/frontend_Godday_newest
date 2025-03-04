@@ -165,7 +165,7 @@ function AppContent() {
   console.log('My current location is: ', location.pathname);
   
   // Remove token when navigating to "/"
-  if (location.pathname === '/') {
+  if (location.pathname == '/') {
     localStorage.removeItem('token'); 
     setToken(null); 
   }
@@ -173,7 +173,7 @@ function AppContent() {
   // Ensure token removal when navigating via browser back/forward buttons
   const handleNavigation = () => {
     console.log('Browser navigation detected:', window.location.pathname);
-    if (window.location.pathname === '/') {
+    if (window.location.pathname == '/') {
       localStorage.removeItem('token');
       setToken(null);
     }
