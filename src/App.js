@@ -185,7 +185,7 @@ function AppContent() {
         <Route
           path="/filesystem"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute token={token}>
               <FullFileManager setFileProtection={setFileProtection} />
             </ProtectedRoute>
           }
@@ -204,10 +204,16 @@ function AppContent() {
 }
 
 
-const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem('token');
+// const ProtectedRoute = ({ children }) => {
+//   const token = localStorage.getItem('token');
+//   return token ? children : <Navigate to="/" />;
+// };
+
+const ProtectedRoute = ({ children , token }) => {
+  // const token = localStorage.getItem('token');
   return token ? children : <Navigate to="/" />;
 };
+
 
 export default App;
 
